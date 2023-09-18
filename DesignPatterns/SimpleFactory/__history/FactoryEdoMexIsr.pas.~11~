@@ -1,0 +1,51 @@
+{***********************************************************}
+{                                                           }
+{    unit FactoryEdoMexIsr                                  }
+{    Here is the logic to create Mexico States              }
+{    This is the Factory of pattern Simple Factory          }
+{                                                           }
+{    Copyright (c) 1986,2023 Microsip                       }
+{                                                           }
+{***********************************************************}
+unit FactoryEdoMexIsr;
+
+interface
+uses System.SysUtils, StrUtils, InEdoMex, EdoMexCoahuila, EdoMexDurango, EdoMexZacatecas;
+type
+  /// <summary>
+  ///   Factory class to create Mexico States.
+  /// </summary>
+  TEdoMexIsrFactory = class(TObject)
+    public
+      /// <summary>
+      ///   Create the Mexico States
+      /// </summary>
+      /// <param name="ANombreEdoMex">
+      ///   Name of the Mexico State.
+      /// </param>
+      /// <returns>
+      ///   Return a Mexico State.Is the concrete product of the Simple Factory
+      /// </returns>
+      function CrearEdoMex(ANombreEdoMex: String): IEdoMex;
+  end;
+implementation
+function TEdoMexIsrFactory.CrearEdoMex(ANombreEdoMex: String): IEdoMex;
+begin
+  // Logic to create the new Mexico States.
+  case AnsiIndexStr(ANombreEdoMex, ['Coahuila', 'Durango', 'Zacatecas']) of
+      0:
+        begin
+          Result := TEdoMexCoahuila.create;
+        end;
+      1:
+        begin
+          Result := TEdoMexDurango.create;
+        end;
+      2:
+        begin
+          Result := TEdoMexZacatecas.create;
+        end;
+      end;
+end;
+
+end.

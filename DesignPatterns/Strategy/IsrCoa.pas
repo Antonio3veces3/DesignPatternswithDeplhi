@@ -1,0 +1,29 @@
+{***********************************************************}
+{                                                           }
+{    unit IsrCoa                                            }
+{    Calculates the ISR according to the                    }
+{    laws in Coahuila, Mexico.                               }
+{                                                           }
+{    Copyright (c) 1986,2023 Microsip                       }
+{                                                           }
+{***********************************************************}
+unit IsrCoa;
+
+interface
+
+uses ICalculatorIsr, System.Math;
+  type
+    /// <summary>
+    ///  Class to calculate the ISR according Coahuila laws.
+    ///  Is a concret Strategy.
+    /// </summary>
+    TIsrCoa= class(TInterfacedObject, IIsrCalculator)
+      function Calculate(AnAmmount: Double): Double;
+    end;
+implementation
+  function TIsrCoa.Calculate(AnAmmount: Double): Double;
+  begin
+    // Formula to calculate ISR in Coahuila
+    Result:= RoundTo((AnAmmount * 0.20),-2);
+  end;
+end.

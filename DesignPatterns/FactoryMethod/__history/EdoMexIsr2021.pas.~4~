@@ -1,0 +1,29 @@
+unit EdoMexIsr2021;
+
+interface
+uses System.SysUtils, StrUtils, EdoMexCoahuila, EdoMexDurango, EdoMexZacatecas, CreatorEdoMexIsr, InEdoMex;
+type
+  TEdoMexIsr2021 = class(TEdoMexIsrCreator)
+    private
+    function CrearEdoMex(ANombreEdoMex: String): IEdoMex; override;
+  end;
+
+implementation
+function TEdoMexIsr2021.CrearEdoMex(ANombreEdoMex: string): IEdoMex;
+begin
+  case AnsiIndexStr(ANombreEdoMex, ['Coahuila', 'Durango', 'Zacatecas']) of
+      0:
+        begin
+          Result := TEdoMexCoahuila.create;
+        end;
+      1:
+        begin
+          Result := TEdoMexDurango.create;
+        end;
+      2:
+        begin
+          Result := TEdoMexZacatecas.create;
+        end;
+      end;
+end;
+end.

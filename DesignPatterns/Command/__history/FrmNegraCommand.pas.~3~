@@ -1,0 +1,28 @@
+unit FrmNegraCommand;
+
+interface
+uses Vcl.Forms, Command, Receiver;
+type
+  TFrmNegraCommand = class(TInterfacedObject, ICommand)
+    private
+      FForm : TReceiver;
+    public
+      constructor Create(AForm : TReceiver);
+      procedure Execute;
+  end;
+
+
+
+implementation
+
+constructor TFrmNegraCommand.Create(AForm: TReceiver);
+begin
+  FForm := AForm;
+end;
+
+procedure TFrmNegraCommand.Execute;
+begin
+  FForm.SetFrmNegra;
+end;
+
+end.

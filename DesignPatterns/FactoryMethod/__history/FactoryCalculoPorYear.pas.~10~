@@ -1,0 +1,65 @@
+{***********************************************************}
+{                                                           }
+{    unit FactoryCalculoPorYear                             }
+{    Cotiene la logica para crear las fabricas que calculan }
+{    el ISR de un año en especifico                         }
+{                                                           }
+{                                                           }
+{    Copyright (c) 1986,2023 Microsip                       }
+{                                                           }
+{***********************************************************}
+unit FactoryCalculoPorYear;
+
+interface
+uses System.SysUtils, StrUtils, CreatorEdoMexIsr ,EdoMexIsr2021, EdoMexIsr2022, EdoMexIsr2023;
+type
+  /// <summary>
+  ///   Clase encargada de crear las fabricas calculadoras de ISR
+  ///   conforme a un año especifico.
+  /// </summary>
+  TCalculoPorYearFactory = class(TObject)
+    public
+      /// <summary>
+      ///   Se encarga de crear las fabricas que calculan ISR de años
+      ///   especificos
+      /// </summary>
+      /// <param name="AYear">
+      ///   Nombre del año, ejemplo "2023"
+      /// </param>
+      /// <returns>
+      ///   Regresa la fabrica encargada de calcular ISR en el año dado.
+      /// </returns>
+      function CrearCalculoPorYear(AYear: String): TEdoMexIsrCreator;
+  end;
+
+implementation
+
+function TCalculoPorYearFactory.CrearCalculoPorYear(AYear: string): TEdoMexIsrCreator;
+//var
+  //lEdoMex: TEdoMexIsrCreator;
+begin
+  try
+    // Por el momento solo se tienen 3 años para calcular ISR: 2021, 2022 y 2023.
+    // Segun el año que se reciba es la fabrica que se crea.
+    case AnsiIndexStr(AYear, ['2021', '2022', '2023']) of
+        0:
+          begin
+            Result := TEdoMexIsr2021.Create;
+          end;
+        1:
+          begin
+            Result := TEdoMexIsr2022.Create;
+          end;
+        2:
+          begin
+            Result := TEdoMexIsr2023.Create;
+          end;
+        end;
+    // Result := lEdoMex;
+  finally
+    //FreeAndNil(lEdoMex);
+    Result.Free;
+  end;
+
+end;
+end.

@@ -1,0 +1,17 @@
+unit IsrCoa;
+
+interface
+
+uses ICalculatorIsr, System.Math;
+  type
+    TIsrCoa= class(TInterfacedObject, IIsrCalculator)
+      function Calculate(AnAmmount: Double): Double;
+    end;
+implementation
+  function TIsrCoa.Calculate(AnAmmount: Double): Double;
+  var isr: Double;
+  begin
+    isr:= RoundTo((AnAmmount * 0.20),-2);
+    Result:= isr;
+  end;
+end.

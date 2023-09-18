@@ -1,0 +1,29 @@
+unit FechaYHoraCommand;
+
+interface
+
+uses Vcl.Forms, Command, Receiver;
+type
+  TFechaYHoraCommand = class(TInterfacedObject, ICommand)
+    private
+      FForm : TReceiver;
+    public
+      constructor Create(AForm : TReceiver);
+      procedure Execute;
+  end;
+
+
+
+implementation
+
+constructor TFechaYHoraCommand.Create(AForm: TReceiver);
+begin
+  FForm := AForm;
+end;
+
+procedure TFechaYHoraCommand.Execute;
+begin
+  FForm.VerFechaYHora;
+end;
+
+end.

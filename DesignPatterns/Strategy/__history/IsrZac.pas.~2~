@@ -1,0 +1,32 @@
+unit IsrZac;
+
+interface
+uses ICalculatorIsr;
+  type
+  TIsrZac= class(TInterfacedObject, IIsrCalculator)
+    function Calculate(AnAmmount: Integer): Double;
+  end;
+implementation
+  function TIsrZac.Calculate(AnAmmount: Integer): Double;
+  var isr: Double;
+  begin
+    if(AnAmmount <= 1000) then
+      begin
+        isr:= 100;
+      end
+    else
+      begin
+        if(AnAmmount <=5000) then
+          begin
+            isr:= 200;
+          end
+        else
+          begin
+            isr:= 300
+          end;
+
+      end;
+    Result:= isr;
+  end;
+end.
+

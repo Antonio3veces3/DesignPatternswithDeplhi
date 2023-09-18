@@ -1,0 +1,42 @@
+{***********************************************************}
+{                                                           }
+{    unit IsrDur                                            }
+{    Calculates the ISR according to the                    }
+{    laws in Durango, Mexico                                }
+{                                                           }
+{    Copyright (c) 1986,2023 Microsip                       }
+{                                                           }
+{***********************************************************}
+unit State;
+
+interface
+uses ICalculatorIsr, InEdoMex, FactoryEdoMexIsr;
+type
+  /// <summary>
+  ///   Represents the different states in Mexico.
+  ///   Is the context on the design pattern strategy
+  /// </summary>
+  TStateMexIsr= class(TObject)
+
+  private
+    // Create reference to the Strategy
+    // With this reference we can access to the different wayt to calculate ISR
+    FIsrCalculator: IIsrCalculator;
+    FEdoMex : IEdoMex;
+    FFactory : TEdoMexIsrFactory;
+  public
+    constructor Create(AFactory : TEdoMexIsrFactory);
+    function CalcularEdoMexIsr(ANombreEdoMex: String): Double;
+  end;
+
+implementation
+constructor TStateMexIsr.Create(AFactory: TEdoMexIsrFactory);
+begin
+  FFactory := AFactory;
+end;
+
+function TStateMexIsr.CalcularEdoMexIsr(ANombreEdoMex: String): Double;
+  begin
+
+  end;
+end.

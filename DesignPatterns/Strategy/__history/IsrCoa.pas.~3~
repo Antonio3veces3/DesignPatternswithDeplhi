@@ -1,0 +1,12 @@
+unit IsrCoa;
+
+interface
+
+uses ICalculatorIsr;
+  type
+    TIsrCo= class(TInterfacedObject, IIsrCalculator)
+      function Calculate(AnAmmount: Double): Double;
+    end;
+implementation
+
+end.

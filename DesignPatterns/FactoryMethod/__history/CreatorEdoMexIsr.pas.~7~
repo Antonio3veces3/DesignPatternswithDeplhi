@@ -1,0 +1,18 @@
+unit CreatorEdoMexIsr;
+
+interface
+uses System.SysUtils, StrUtils, InEdoMex;
+type
+  TEdoMexIsrCreator = class abstract(TObject)
+    public
+      function CrearEdoMex(ANombreEdoMex: String): IEdoMex; Virtual; abstract;
+      function CalcularIsr(AnAmmount: Double; ANombreEdoMex: String): Double;
+  end;
+implementation
+function TEdoMexIsrCreator.CalcularIsr(AnAmmount: Double; ANombreEdoMex: String): Double;
+var lEdoMex : IEdoMex;
+begin
+  lEdoMex := CrearEdoMex(ANombreEdoMex);
+  Result := lEdoMex.CalcularIsr(AnAmmount);
+end;
+end.

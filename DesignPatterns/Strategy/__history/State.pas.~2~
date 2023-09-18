@@ -1,0 +1,16 @@
+unit State;
+
+interface
+uses ICalculatorIsr;
+type
+  TState= class(TObject)
+
+  private
+    FIsrCalculator: IIsrCalculator;
+  public
+
+  end;
+
+implementation
+
+end.

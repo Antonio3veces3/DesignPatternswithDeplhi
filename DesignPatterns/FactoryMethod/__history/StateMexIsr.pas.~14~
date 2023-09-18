@@ -1,0 +1,43 @@
+{***********************************************************}
+{                                                           }
+{    unit IsrDur                                            }
+{    Calculates the ISR according to the                    }
+{    laws in Durango, Mexico                                }
+{                                                           }
+{    Copyright (c) 1986,2023 Microsip                       }
+{                                                           }
+{***********************************************************}
+unit StateMexIsr;
+
+interface
+uses Vcl.Dialogs, InEdoMex, CreatorEdoMexIsr;
+type
+  TStateMexIsr = class(TObject)
+
+  private
+    FEdoMexStr : String;
+    FCreator : TEdoMexIsrCreator;
+    procedure SetEdoMex(ANombreEdoMex: String);
+  public
+    constructor Create(AFactory : TEdoMexIsrCreator);
+    property edoMex : String read FEdoMexStr write SetEdoMex;
+    function CalcularEdoMexIsr(AnAmmount: Double): Double;
+  end;
+
+implementation
+constructor TStateMexIsr.Create(AFactory: TEdoMexIsrCreator);
+begin
+  FCreator := AFactory;
+  FEdoMexStr := '';
+end;
+
+procedure TStateMexIsr.SetEdoMex(ANombreEdoMex: String);
+begin
+  FEdoMexStr := ANombreEdoMex;
+end;
+
+function TStateMexIsr.CalcularEdoMexIsr(AnAmmount: Double): Double;
+begin
+  Result := FCreator.CalcularIsr(AnAmmount, FEdoMexStr);
+end;
+end.

@@ -1,0 +1,34 @@
+unit SaludarCommand;
+
+interface
+uses Vcl.Forms, Command, Receiver;
+type
+  TSaludarCommand = class(TInterfacedObject, ICommand)
+  private
+    FForm : TReceiver;
+    FNombre: String;
+    function GetNombre : String;
+  public
+    constructor Create(AForm : TReceiver);
+    procedure Execute;
+    property nombre : String read GetNombre;
+  end;
+
+implementation
+
+constructor TSaludarCommand.Create(AForm: TReceiver);
+begin
+  FForm := AForm;
+  FNombre := 'Saludar';
+end;
+
+procedure TSaludarCommand.Execute;
+begin
+  FForm.Saludar;
+end;
+
+function TSaludarCommand.GetNombre: string;
+begin
+  Result := FNombre;
+end;
+end.

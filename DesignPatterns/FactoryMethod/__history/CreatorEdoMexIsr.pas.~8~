@@ -1,0 +1,28 @@
+{***********************************************************}
+{                                                           }
+{    unit InEdoMex                                          }
+{    Is an interface to encapsulate the ways to calculate   }
+{    ISR in the Mexico states.                              }
+{    Is the Product of the Factory Method                   }
+{                                                           }
+{    Copyright (c) 1986,2023 Microsip                       }
+{                                                           }
+{***********************************************************}
+unit CreatorEdoMexIsr;
+
+interface
+uses System.SysUtils, StrUtils, InEdoMex;
+type
+  TEdoMexIsrCreator = class abstract(TObject)
+    public
+      function CrearEdoMex(ANombreEdoMex: String): IEdoMex; Virtual; abstract;
+      function CalcularIsr(AnAmmount: Double; ANombreEdoMex: String): Double;
+  end;
+implementation
+function TEdoMexIsrCreator.CalcularIsr(AnAmmount: Double; ANombreEdoMex: String): Double;
+var lEdoMex : IEdoMex;
+begin
+  lEdoMex := CrearEdoMex(ANombreEdoMex);
+  Result := lEdoMex.CalcularIsr(AnAmmount);
+end;
+end.

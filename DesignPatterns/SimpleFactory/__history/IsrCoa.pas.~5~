@@ -1,0 +1,17 @@
+unit IsrCoa;
+
+interface
+
+uses ICalculatorIsr;
+  type
+    TIsrCoa= class(TInterfacedObject, IIsrCalculator)
+      function Calculate(AnAmmount: Double): Double;
+    end;
+implementation
+  function TIsrCoa.Calculate(AnAmmount: Double): Double;
+  var isr: Double;
+  begin
+    isr:= AnAmmount * 0.20;
+    Result:= isr;
+  end;
+end.

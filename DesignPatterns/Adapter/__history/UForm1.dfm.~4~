@@ -1,0 +1,89 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 149
+  ClientWidth = 491
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object GroupBox1: TGroupBox
+    Left = 32
+    Top = 19
+    Width = 257
+    Height = 122
+    Caption = 'Calculadora Suma'
+    TabOrder = 0
+    object edtNumA: TEdit
+      Left = 17
+      Top = 48
+      Width = 97
+      Height = 21
+      NumbersOnly = True
+      TabOrder = 0
+      Text = '0'
+    end
+    object edtNumB: TEdit
+      Left = 136
+      Top = 48
+      Width = 97
+      Height = 21
+      NumbersOnly = True
+      TabOrder = 1
+      Text = '0'
+    end
+    object StaticText1: TStaticText
+      Left = 17
+      Top = 25
+      Width = 54
+      Height = 17
+      Caption = 'Numero 1:'
+      TabOrder = 2
+    end
+    object StaticText2: TStaticText
+      Left = 136
+      Top = 25
+      Width = 54
+      Height = 17
+      Caption = 'Numero 2:'
+      TabOrder = 3
+    end
+    object btnSumar: TButton
+      Left = 86
+      Top = 83
+      Width = 75
+      Height = 25
+      Caption = 'Sumar'
+      TabOrder = 4
+      OnClick = btnSumarClick
+    end
+  end
+  object GroupBox2: TGroupBox
+    Left = 298
+    Top = 19
+    Width = 185
+    Height = 122
+    Caption = 'Resultado:'
+    TabOrder = 1
+  end
+  object stxtResult: TStaticText
+    Left = 368
+    Top = 67
+    Width = 19
+    Height = 37
+    Caption = '0'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -27
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 2
+  end
+end

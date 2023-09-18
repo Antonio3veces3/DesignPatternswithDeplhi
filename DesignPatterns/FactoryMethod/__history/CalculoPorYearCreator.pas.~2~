@@ -1,0 +1,16 @@
+unit CalculoPorYearCreator;
+
+interface
+uses System.SysUtils, StrUtils, CreatorEdoMexIsr ,EdoMexIsr2021, EdoMexIsr2022, EdoMexIsr2023;
+type
+  TCalculoPorYear = class(TObject)
+    public
+      function CrearCalculoPorYear(AYear: String): TEdoMexIsrCreator;
+  end;
+
+implementation
+function TCalculoPorYear.CrearCalculoPorYear(AYear: string): TEdoMexIsrCreator;
+begin
+
+end;
+end.

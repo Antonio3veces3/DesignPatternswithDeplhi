@@ -1,0 +1,45 @@
+{***********************************************************}
+{                                                           }
+{    unit IsrZac                                            }
+{    Calcula el ISR conforme las leyes de Zacatecas, Mexico }
+{                                                           }
+{    Copyright (c) 1986,2023 Microsip                       }
+{                                                           }
+{***********************************************************}
+unit EdoMexZacatecas;
+
+interface
+
+uses InEdoMex;
+  type
+  /// <summary>
+  ///   Clase que calcula el ISR conforme las leyes de Zacatecas, Mexico
+  /// </summary>
+  TEdoMexZacatecas = class(TInterfacedObject, IEdoMex)
+      /// <summary>
+      ///   Calcula el ISR aplicando la logica de Zacatecas
+      /// </summary>
+      /// <param name="AnAmmount">
+      ///   Importe gravable
+      /// </param>
+      /// <returns>
+      ///   Regresa el total de ISR
+      /// </returns>
+    function CalcularIsr(AnAmmount: Double): Double;
+  end;
+
+implementation
+
+function TEdoMexZacatecas.CalcularIsr(AnAmmount: Double): Double;
+begin
+  // Condiciones de Zacatecas para calcular el ISR.
+  if(AnAmmount <= 1000) then
+      Result := 100
+  else
+      if(AnAmmount <= 5000) then
+          Result := 200
+      else
+          Result := 300;
+end;
+end.
+

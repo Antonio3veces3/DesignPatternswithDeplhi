@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/07/19 15:49:51.000.726,=C:\DelphiProjects\Unit1.pas</Transaction>
+    <Transaction>2023/07/19 15:57:31.000.099,C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Adapter\UForm1.pas=C:\DelphiProjects\Unit1.pas</Transaction>
+    <Transaction>2023/07/19 15:57:31.000.099,C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Adapter\UForm1.dfm=C:\DelphiProjects\Unit1.dfm</Transaction>
+    <Transaction>2023/07/19 15:58:44.000.569,=C:\DelphiProjects\Unit1.pas</Transaction>
+    <Transaction>2023/07/19 15:59:06.000.638,C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Adapter\SumInteger.pas=C:\DelphiProjects\Unit1.pas</Transaction>
+    <Transaction>2023/07/19 16:00:12.000.960,=C:\DelphiProjects\Unit1.pas</Transaction>
+    <Transaction>2023/07/19 16:00:56.000.120,C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Adapter\CalcSumDouble.pas=C:\DelphiProjects\Unit1.pas</Transaction>
+    <Transaction>2023/07/19 16:02:31.000.351,=C:\DelphiProjects\Unit1.pas</Transaction>
+    <Transaction>2023/07/19 16:02:59.000.712,C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Adapter\CalcSumInteger.pas=C:\DelphiProjects\Unit1.pas</Transaction>
+    <Transaction>2023/07/19 16:11:30.000.444,=C:\DelphiProjects\Unit1.pas</Transaction>
+    <Transaction>2023/07/19 16:11:41.000.415,C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Adapter\SumDoubleAdapter.pas=C:\DelphiProjects\Unit1.pas</Transaction>
+    <Transaction>2023/07/19 16:41:26.000.838,C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Adapter\SumDoubleAdapter.pas=</Transaction>
+    <Transaction>2023/07/19 16:42:27.000.189,=C:\DelphiProjects\Unit1.pas</Transaction>
+    <Transaction>2023/07/19 16:43:15.000.765,C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Adapter\SumDoubleAdapter.pas=C:\DelphiProjects\Unit1.pas</Transaction>
+    <Transaction>2023/07/19 16:59:24.000.575,C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Adapter\SumAdapter.pas=C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Adapter\SumDoubleAdapter.pas</Transaction>
+    <Transaction>2023/07/19 17:07:02.000.147,C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Adapter\SumAdapter.pas=</Transaction>
+    <Transaction>2023/07/19 17:07:11.000.837,C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Adapter\Project1.dproj=C:\DelphiProjects\Project1.dproj</Transaction>
+    <Transaction>2023/07/19 17:14:00.000.546,=C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Adapter\Unit1.pas</Transaction>
+    <Transaction>2023/07/19 17:14:51.000.849,C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Adapter\Unit1.pas=C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Adapter\AdapterSumDouble.pas</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="UForm1.pas"/>
+    <File Path="UForm1.dfm"/>
+    <File Path="SumInteger.pas"/>
+    <File Path="CalcSumDouble.pas"/>
+    <File Path="CalcSumInteger.pas"/>
+    <File Path="AdapterSumDouble.pas"/>
+  </ProjectSortOrder>
+</BorlandProject>

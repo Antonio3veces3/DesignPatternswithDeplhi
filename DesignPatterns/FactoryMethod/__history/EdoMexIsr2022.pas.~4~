@@ -1,0 +1,40 @@
+unit EdoMexIsr2022;
+
+interface
+uses System.SysUtils, StrUtils, EdoMexCoahuila, EdoMexDurango, EdoMexZacatecas, CreatorEdoMexIsr, InEdoMex;
+type
+  TEdoMexIsr2022 = class(TEdoMexIsrCreator)
+    private
+    /// <summary>
+      ///   Se encarga de crear los Estados de Mexico.
+      /// </summary>
+      /// <param name="ANombreEdoMex">
+      ///   Nombre del Estado de Mexico
+      /// </param>
+      /// <returns>
+      ///   Regresa una instancia de un Estado de Mexico.
+      /// </returns>
+    function CrearEdoMex(ANombreEdoMex: String): IEdoMex; override;
+  end;
+
+implementation
+function TEdoMexIsr2022.CrearEdoMex(ANombreEdoMex: string): IEdoMex;
+begin
+  // Segun el nombre estado que se reciba es la instancia que se crea.
+  case AnsiIndexStr(ANombreEdoMex, ['Coahuila', 'Durango', 'Zacatecas']) of
+      0:
+        begin
+          Result := TEdoMexDurango.create;
+        end;
+      1:
+        begin
+          Result := TEdoMexZacatecas.create;
+        end;
+      2:
+        begin
+          Result := TEdoMexCoahuila.create;
+        end;
+      end;
+end;
+end.
+

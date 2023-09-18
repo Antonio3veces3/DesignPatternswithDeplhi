@@ -1,0 +1,58 @@
+{***********************************************************}
+{                                                           }
+{    unit EdoMexIsr2021                                     }
+{    Se encarga de calcular el ISR conforme a las normativas}
+{    del año 2021                                           }
+{                                                           }
+{    Copyright (c) 1986,2023 Microsip                       }
+{                                                           }
+{***********************************************************}
+unit EdoMexIsr2021;
+
+interface
+uses System.SysUtils, StrUtils, EdoMexCoahuila, EdoMexDurango, EdoMexZacatecas, CreatorEdoMexIsr, InEdoMex;
+type
+  /// <summary>
+  ///   Clase heredada de la clase abstracta TEDoMexIsrCreator, para
+  ///   implementar la logica de creacion de Estados y calculo de ISR segun las
+  ///   normas del año 2021
+  /// </summary>
+  /// <param name="TEdoMexIsrCreator">
+  ///   Clase abstracta con los metodos de creacion de estados de Mexici
+  ///   y calculo de ISR
+  /// </param>
+  TEdoMexIsr2021 = class(TEdoMexIsrCreator)
+    private
+      /// <summary>
+      ///   Se encarga de crear los Estados de Mexico que calculan el ISR
+      ///  con las normas del año 2021
+      /// </summary>
+      /// <param name="ANombreEdoMex">
+      ///   Nombre del Estado de Mexico
+      /// </param>
+      /// <returns>
+      ///   Regresa una instancia de un Estado de Mexico.
+      /// </returns>
+    function CrearEdoMex(ANombreEdoMex: String): IEdoMex; override;
+  end;
+
+implementation
+function TEdoMexIsr2021.CrearEdoMex(ANombreEdoMex: string): IEdoMex;
+begin
+  // Segun el nombre estado que se reciba es la instancia que se crea.
+  case AnsiIndexStr(ANombreEdoMex, ['Coahuila', 'Durango', 'Zacatecas']) of
+      0:
+        begin
+          Result := TEdoMexCoahuila.create;
+        end;
+      1:
+        begin
+          Result := TEdoMexDurango.create;
+        end;
+      2:
+        begin
+          Result := TEdoMexZacatecas.create;
+        end;
+      end;
+end;
+end.

@@ -1,0 +1,42 @@
+unit Sum;
+
+interface
+uses Observer, Subject, Vcl.StdCtrls, System.SysUtils,Vcl.Dialogs;
+
+type
+  TSum= class(TInterfacedObject, IObserver)
+  private
+    lTotalSum: Integer;
+    lSubject: ISubject;
+    lControl: TStaticText;
+  public
+    constructor Create(ASubject: ISubject; AControl: TStaticText);
+    procedure Update(ANewNumber: Integer);
+    procedure Display;
+  end;
+
+implementation
+constructor TSum.Create(ASubject: ISubject; AControl: TStaticText);
+begin
+  lSubject:= ASubject;
+  lControl:= AControl;
+  lTotalSum:=0;
+  lSubject.Subscribe(Self);
+
+end;
+
+procedure TSum.Update(ANewNumber: Integer);
+begin
+  if ANewNumber= -1 then
+    lTotalSum:= 0
+  else
+    lTotalSum:= lTotalSum + ANewNumber;
+
+  Display();
+end;
+
+procedure TSum.Display;
+begin
+  lControl.Caption:= IntToStr(lTotalSum);
+end;
+end.

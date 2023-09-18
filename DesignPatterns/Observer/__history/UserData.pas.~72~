@@ -1,0 +1,73 @@
+unit UserData;
+
+interface
+uses Subject, Observer, System.Generics.Collections, System.SysUtils, Vcl.Dialogs;
+type
+  TUserData= class(TInterfacedObject, ISubject)
+  private
+    lObserverList: TList<IObserver>;
+    lNewNumber: Integer;
+    procedure ValidateExistObservers;
+  public
+    constructor Create;
+    procedure Subscribe(AnObserver: IObserver);
+    procedure UnSubscribe(AnObserver: IObserver);
+    procedure Notify();
+    procedure AddNewNumber(ANewNumber: Integer);
+    procedure Reset;
+    function GetNewNumber: Integer;
+  end;
+
+implementation
+constructor TUserData.Create;
+begin
+  inherited Create;
+  lObserverList:= TList<IObserver>.Create;
+end;
+
+procedure TUserData.Subscribe(AnObserver: IObserver);
+begin
+ lObserverList.Add(AnObserver);
+end;
+
+procedure TUserData.UnSubscribe(AnObserver: IObserver);
+begin
+  lObserverList.Remove(AnObserver);
+end;
+
+procedure TUserData.Notify;
+begin
+  ValidateExistObservers();
+  for var i := 0 to (lObserverList.Count - 1) do
+     lObserverList[i].Update(lNewNumber);
+end;
+
+procedure TUserData.AddNewNumber(ANewNumber: Integer);
+begin
+  lNewNumber:= ANewNumber;
+  Notify();
+end;
+
+procedure TUserData.Reset;
+begin
+  ValidateExistObservers();
+  for var i := 0 to (lObserverList.Count - 1) do
+     lObserverList[i].Update(-1);
+end;
+
+procedure TUserData.ValidateExistObservers;
+begin
+  if(lObserverList.Count=0) then
+    begin
+      ShowMessage('No hay observadores en la lista');
+      Exit;
+    end;
+end;
+
+function TUserData.GetNewNumber: Integer;
+begin
+  Result:= lNewNumber;
+end;
+
+
+end.

@@ -1,0 +1,11 @@
+unit Observer;
+
+interface
+uses Subject;
+type
+  IObserver= interface['{4AA8AE05-FE4D-46AF-85E9-A87A7E6B6653}']
+    procedure Update(observable: Subject, number: Integer);
+  end;
+implementation
+
+end.

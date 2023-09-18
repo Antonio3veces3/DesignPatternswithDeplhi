@@ -1,0 +1,28 @@
+unit SumDoubleAdapter;
+
+interface
+uses SumInteger, CalcSumDouble, System.Math;
+
+type
+  TSumDoubleAdapter = class(TInterfacedObject, ISumInt)
+    private
+      FCalcSumDouble : TCalcSumDouble;
+    public
+      constructor Create(ACalcSumDouble: TCalcSumDouble);
+      function Add(ANumA: integer; ANumB: integer): integer;
+  end;
+
+
+implementation
+
+constructor TSumDoubleAdapter.Create(ACalcSumDouble: TCalcSumDouble);
+begin
+  FCalcSumDouble := ACalcSumDouble;
+end;
+
+function TSumDoubleAdapter.Add(ANumA: Integer; ANumB: Integer): Integer;
+begin
+  Result := Round(FCalcSumDouble.Add(ANumA, ANumB));
+end;
+
+end.

@@ -1,0 +1,31 @@
+{***********************************************************}
+{                                                           }
+{    unit IsrCoa                                            }
+{    Calculates the ISR according to the                    }
+{    laws in Coahuila, Mexico.                              }
+{                                                           }
+{    Copyright (c) 1986,2023 Microsip                       }
+{                                                           }
+{***********************************************************}
+unit EdoMexCoahuila;
+
+interface
+
+uses InEdoMex, System.Math;
+  type
+    /// <summary>
+    ///  Class to calculate the ISR according Coahuila laws.
+    ///  Is a concret Strategy.
+    /// </summary>
+    TEdoMexCoahuila = class(TInterfacedObject, IEdoMex)
+      function CalcularIsr(AnAmmount: Double): Double;
+    end;
+
+implementation
+
+function TEdoMexCoahuila.CalcularIsr(AnAmmount: Double): Double;
+begin
+  // Formula to calculate ISR in Coahuila
+  Result := RoundTo((AnAmmount * 0.20),-2);
+end;
+end.

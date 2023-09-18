@@ -1,0 +1,25 @@
+unit State;
+
+interface
+uses ICalculatorIsr;
+type
+  TState= class(TObject)
+
+  private
+    FIsrCalculator: IIsrCalculator;
+  public
+    function Calculate(AnImporte: Double): Double;
+    procedure setState(AState: IIsrCalculator);
+  end;
+
+implementation
+function TState.Calculate(AnImporte: Double): Double;
+  begin
+   FIsrCalculator.Calculate(AnImporte);
+  end;
+
+procedure TState.setState(AState: IIsrCalculator);
+  begin
+    FIsrCalculator:= AState;
+  end;
+end.

@@ -1,0 +1,17 @@
+unit IsrDur;
+
+interface
+uses ICalculatorIsr;
+  type
+  TIsrDur= class(TInterfacedObject, IIsrCalculator)
+    function Calculate(AnAmmount: Integer): Double;
+  end;
+implementation
+  function TIsrDur.Calculate(AnAmmount: Integer): Double;
+  var isr: Double;
+  begin
+    isr:= (10+AnAmmount)*0.15;
+    {//Redondear a enteros}
+    Result:= isr;
+  end;
+end.

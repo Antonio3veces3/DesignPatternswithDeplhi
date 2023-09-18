@@ -1,0 +1,33 @@
+unit FactoryEdoMexIsr;
+
+interface
+uses InEdoMex, EdoMexCoahuila, EdoMexDurango, EdoMexZacatecas;
+type
+  TEdoMexFactory = class(TObject)
+    private
+      FEdoMex : IEdoMex;
+    public
+      function CrearEdoMex(ANameEdoMex: String): IEdoMex;
+  end;
+implementation
+function TEdoMexFactory.CrearEdoMex(ANameEdoMex: String): IEdoMex;
+begin
+  if(ANameEdoMex = 'Coahuila') then
+    begin
+      FEdoMex := TEdoMexCoahuila.create;
+      Result := FEdoMex;
+    end
+  else
+    if(ANameEdoMex = 'Durango') then
+      begin
+        FEdoMex := TEdoMexDurango.create;
+        Result := FEdoMex;
+      end
+    else
+      begin
+        FEdoMex := TEdoMexZacatecas.create;
+        Result := FEdoMex;
+      end;
+end;
+
+end.

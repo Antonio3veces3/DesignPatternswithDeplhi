@@ -1,0 +1,63 @@
+{***********************************************************}
+{                                                           }
+{    unit CreatorEdoMexIsr                                  }
+{    Se encarga de fabricas los Estados de Mexico que       }
+{    contienen la logica de calculo ISR                     }
+{                                                           }
+{                                                           }
+{    Copyright (c) 1986,2023 Microsip                       }
+{                                                           }
+{***********************************************************}
+unit CreatorEdoMexIsr;
+
+interface
+uses System.SysUtils, Vcl.Dialogs, StrUtils, InEdoMex;
+type
+  /// <summary>
+  ///   Clase abstract que determina las bases para crear los Estados de Mexico
+  ///   y la forma en la que se calculan su ISR
+  /// </summary>
+  TEdoMexIsrCreator = class abstract(TObject)
+    public
+      /// <summary>
+      ///   Metodo abstracto para implementar la logica de creacion de los
+      ///   estados de Mexico
+      /// </summary>
+      /// <param name="ANombreEdoMex">
+      ///   Nombre del estado de Mexico
+      /// </param>
+      /// <returns>
+      ///   Regresa una instancia del Estado de Mexico dado.
+      /// </returns>
+      function CrearEdoMex(ANombreEdoMex: String): IEdoMex; Virtual; abstract;
+      /// <summary>
+      ///   Se encarga de calcular el ISR de los estados de Mexico.
+      /// </summary>
+      /// <param name="AnAmmount">
+      ///   Importe gravable
+      /// </param>
+      /// <param name="ANombreEdoMex">
+      ///   Nombre del estado de Mexico del que va a hacer el calculo ISR
+      /// </param>
+      /// <returns>
+      ///   Regresa el total del ISR
+      /// </returns>
+      function CalcularIsr(AnAmmount: Double; ANombreEdoMex: String): Double;
+  end;
+
+implementation
+
+function TEdoMexIsrCreator.CalcularIsr(AnAmmount: Double; ANombreEdoMex: String): Double;
+var lEdoMex : IEdoMex;
+begin
+  try
+    // Crea la instancia del estado de Mexico.
+    lEdoMex := CrearEdoMex(ANombreEdoMex);
+    // Calcula el ISR del estado de Mexico creado, utiliza su logica de calculo
+    Result := lEdoMex.CalcularIsr(AnAmmount);
+  finally
+    lEdoMex := nil;
+  end;
+
+end;
+end.

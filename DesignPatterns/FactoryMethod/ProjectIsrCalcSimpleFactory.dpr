@@ -1,0 +1,20 @@
+program ProjectIsrCalcSimpleFactory;
+
+uses
+  Vcl.Forms,
+  IsrCalculatorFrm in 'IsrCalculatorFrm.pas' {Form1},
+  InEdoMex in 'InEdoMex.pas',
+  EdoMexCoahuila in 'EdoMexCoahuila.pas',
+  EdoMexDurango in 'EdoMexDurango.pas',
+  EdoMexZacatecas in 'EdoMexZacatecas.pas',
+  StateMexIsr in 'StateMexIsr.pas',
+  FactoryEdoMexIsr in 'FactoryEdoMexIsr.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TForm1, Form1);
+  Application.Run;
+end.

@@ -1,0 +1,32 @@
+{***********************************************************}
+{                                                           }
+{    unit CreatorEdoMexIsr                                  }
+{    Se encarga de fabricas los Estados de Mexico que       }
+{    contienen la logica de calculo ISR                     }
+{                                                           }
+{                                                           }
+{    Copyright (c) 1986,2023 Microsip                       }
+{                                                           }
+{***********************************************************}
+unit CreatorEdoMexIsr;
+
+interface
+uses System.SysUtils, StrUtils, InEdoMex;
+type
+  /// <summary>
+  ///   Clase abstract que determina las bases para crear los Estados de Mexico
+  ///   y la forma en la que se calculan su ISR
+  /// </summary>
+  TEdoMexIsrCreator = class abstract(TObject)
+    public
+      function CrearEdoMex(ANombreEdoMex: String): IEdoMex; Virtual; abstract;
+      function CalcularIsr(AnAmmount: Double; ANombreEdoMex: String): Double;
+  end;
+implementation
+function TEdoMexIsrCreator.CalcularIsr(AnAmmount: Double; ANombreEdoMex: String): Double;
+var lEdoMex : IEdoMex;
+begin
+  lEdoMex := CrearEdoMex(ANombreEdoMex);
+  Result := lEdoMex.CalcularIsr(AnAmmount);
+end;
+end.

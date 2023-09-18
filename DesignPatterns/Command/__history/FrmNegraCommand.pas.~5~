@@ -1,0 +1,35 @@
+unit FrmNegraCommand;
+
+interface
+uses Vcl.Forms, Command, Receiver;
+type
+  TFrmNegraCommand = class(TInterfacedObject, ICommand)
+    private
+      FForm : TReceiver;
+      FNombre: String;
+      function GetNombre : String;
+    public
+      constructor Create(AForm : TReceiver);
+      procedure Execute;
+      property nombre : String read GetNombre;
+  end;
+
+implementation
+
+constructor TFrmNegraCommand.Create(AForm: TReceiver);
+begin
+  FForm := AForm;
+  FNombre := 'Forma negra';
+end;
+
+procedure TFrmNegraCommand.Execute;
+begin
+  FForm.SetFrmNegra;
+end;
+
+function TFrmNegraCommand.GetNombre: string;
+begin
+  Result := FNombre;
+end;
+
+end.

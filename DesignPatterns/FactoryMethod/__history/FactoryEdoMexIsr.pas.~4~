@@ -1,0 +1,34 @@
+unit FactoryEdoMexIsr;
+
+interface
+uses System.SysUtils, StrUtils, InEdoMex, EdoMexCoahuila, EdoMexDurango, EdoMexZacatecas;
+type
+  TEdoMexFactory = class(TObject)
+    private
+      FEdoMex : IEdoMex;
+    public
+      function CrearEdoMex(ANameEdoMex: String): IEdoMex;
+  end;
+implementation
+function TEdoMexFactory.CrearEdoMex(ANameEdoMex: String): IEdoMex;
+begin
+  case AnsiIndexStr(ANameEdoMex, ['Coahuila', 'Durango', 'Zacatecas']) of
+      0:
+        begin
+          FEdoMex := TEdoMexCoahuila.create;
+          Result := FEdoMex;
+        end;
+      1:
+        begin
+          FEdoMex := TEdoMexDurango.create;
+          Result := FEdoMex;
+        end;
+      2:
+        begin
+          FEdoMex := TEdoMexZacatecas.create;
+          Result := FEdoMex;
+        end;
+      end;
+end;
+
+end.

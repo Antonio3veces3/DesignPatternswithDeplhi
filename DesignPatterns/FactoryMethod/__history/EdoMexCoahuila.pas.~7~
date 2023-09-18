@@ -1,0 +1,36 @@
+{***********************************************************}
+{                                                           }
+{    unit EdoMexCoahuila                                    }
+{    Calcula el ISR conforme las leyes de Coahuila, Mexico  }
+{                                                           }
+{    Copyright (c) 1986,2023 Microsip                       }
+{                                                           }
+{***********************************************************}
+unit EdoMexCoahuila;
+
+interface
+
+uses InEdoMex, System.Math;
+  type
+    /// <summary>
+    ///   Clase que calcula el ISR conforme las leyes de Coahuila, Mexico
+    /// </summary>
+    TEdoMexCoahuila = class(TInterfacedObject, IEdoMex)
+      /// <summary>
+      ///   Calcula el ISR aplicando la logica de Zacatecas
+      /// </summary>
+      /// <param name="AnAmmount">
+      ///   Importe gravable
+      /// </param>
+      /// <returns>
+      ///   Regresa el total de ISR
+      /// </returns>
+      function CalcularIsr(AnAmmount: Double): Double;
+    end;
+implementation
+  function TEdoMexCoahuila.CalcularIsr(AnAmmount: Double): Double;
+  begin
+    // Formula para calcular el ISR en Coahuila
+    Result := RoundTo((AnAmmount * 0.20),-2);
+  end;
+end.

@@ -1,0 +1,124 @@
+{***********************************************************}
+{                                                           }
+{    unit UserData                                          }
+{    Unidad donde se detectan los nuevos numeros que ingresa}
+{    el usuario y lo notifica a los observadores            }
+{                                                           }
+{    Copyright (c) 1986,2023 Microsip                       }
+{                                                           }
+{***********************************************************}
+unit UserData;
+
+interface
+uses Subject, Observer, System.Generics.Collections, System.SysUtils, Vcl.Dialogs;
+type
+  /// <summary>
+  ///   Recibe el nuevo numero del usuario y lo notifica a sus observadores.
+  ///   También se encarga de agregar y eliminar observadores.
+  ///   Esta clase es el concreteSubject del patron Observable.
+  /// </summary>
+  TUserData= class(TInterfacedObject, ISubject)
+  private
+    /// <summary>
+    ///   Lista de observadores suscritos a esta clase.
+    /// </summary>
+    FObserverList: TList<IObserver>;
+    /// <summary>
+    ///   Nuevo numero agregado.
+    /// </summary>
+    lNewNumber: Integer;
+    /// <summary>
+    ///   Valida si TUserData tiene observadores suscritos o no.
+    /// </summary>
+    procedure ValidateExistObservers;
+  public
+    /// <summary>
+    ///   Inicializa la clase, la lista de observadores (Vacia) y lNewNumber
+    ///   en cero.
+    /// </summary>
+    constructor Create;
+    procedure Subscribe(AnObserver: IObserver);
+    procedure UnSubscribe(AnObserver: IObserver);
+    procedure Notify();
+    /// <summary>
+    ///   Recibe el nuevo numero y lo notifica a sus observadores.
+    /// </summary>
+    /// <param name="ANewNumber">
+    ///   El nuevo numero ingresado por el usuario.
+    /// </param>
+    procedure AddNewNumber(ANewNumber: Integer);
+    /// <summary>
+    ///   Indica a todos sus observadores que reinicien sus valores.
+    /// </summary>
+    procedure Reset;
+    /// <summary>
+    ///   Obtiene el nuevo numero agregado por el usuario.
+    /// </summary>
+    /// <returns>
+    ///   Devuelve el nuevo numero agregado.
+    /// </returns>
+    function GetNewNumber: Integer;
+  end;
+
+implementation
+constructor TUserData.Create;
+begin
+  inherited Create;
+  //Inicializa la lista de observadores
+  FObserverList:= TList<IObserver>.Create;
+end;
+
+procedure TUserData.Subscribe(AnObserver: IObserver);
+begin
+ FObserverList.Add(AnObserver);
+end;
+
+procedure TUserData.UnSubscribe(AnObserver: IObserver);
+begin
+  FObserverList.Remove(AnObserver);
+end;
+
+procedure TUserData.Notify;
+begin
+  // Antes de notificar a los observadores primero se debe verificar que si
+  // existan observadores en la lista. Si hay uno o más, entonces notifica.
+  // De lo contrario arroja un error.
+  ValidateExistObservers();
+  for var i := 0 to (lObserverList.Count - 1) do
+     // Envía el nuevo numero a los observadores
+     lObserverList[i].Update(lNewNumber);
+end;
+
+procedure TUserData.AddNewNumber(ANewNumber: Integer);
+begin
+  // Actualiza el nuevo numero registrado.
+  lNewNumber:= ANewNumber;
+  Notify();
+end;
+
+procedure TUserData.Reset;
+begin
+  // Si hay observadores en la lista indica que se reinicien.
+  // De lo contrario arroja un error.
+  ValidateExistObservers();
+  for var i := 0 to (lObserverList.Count - 1) do
+     lObserverList[i].Update(-1);
+end;
+
+procedure TUserData.ValidateExistObservers;
+begin
+  // Si la lista de observadores esta vacia arroja un error.
+  if(lObserverList.Count = 0) then
+    begin
+      ShowMessage('No hay observadores en la lista');
+      Exit;
+    end;
+end;
+
+function TUserData.GetNewNumber: Integer;
+begin
+  Result := lNewNumber;
+end;
+
+
+end.

@@ -1,0 +1,24 @@
+program ProjectIsrCalcFactoryMethod;
+
+uses
+  Vcl.Forms,
+  IsrCalculatorFrmFacMet in 'IsrCalculatorFrmFacMet.pas' {Form1},
+  InEdoMex in 'InEdoMex.pas',
+  EdoMexCoahuila in 'EdoMexCoahuila.pas',
+  EdoMexDurango in 'EdoMexDurango.pas',
+  EdoMexZacatecas in 'EdoMexZacatecas.pas',
+  StateMexIsr in 'StateMexIsr.pas',
+  CreatorEdoMexIsr in 'CreatorEdoMexIsr.pas',
+  EdoMexIsr2021 in 'EdoMexIsr2021.pas',
+  EdoMexIsr2022 in 'EdoMexIsr2022.pas',
+  EdoMexIsr2023 in 'EdoMexIsr2023.pas',
+  FactoryCalculoPorYear in 'FactoryCalculoPorYear.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TForm1, Form1);
+  Application.Run;
+end.

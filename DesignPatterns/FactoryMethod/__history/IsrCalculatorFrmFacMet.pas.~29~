@@ -1,0 +1,153 @@
+{***********************************************************}
+{                                                           }
+{    unit IsrCalculatorFrm                                  }
+{    Cotiene la captura para calcular el ISR                }
+{    de los Estados de Mexico conforme al año               }
+{                                                           }
+{                                                           }
+{    Copyright (c) 1986,2023 Microsip                       }
+{                                                           }
+{***********************************************************}
+unit IsrCalculatorFrmFacMet;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.NumberBox, StrUtils,
+  Vcl.Mask, CreatorEdoMexIsr, FactoryCalculoPorYear;
+
+type
+  /// <summary>
+  ///   TForm1 contiene los componentes visuales para introducir los datos
+  ///   necesarios para calcular el ISR.
+  /// </summary>
+  TForm1 = class(TForm)
+    cmbxState: TComboBox;
+    nmbxAmmount: TNumberBox;
+    StaticText1: TStaticText;
+    StaticText2: TStaticText;
+    GroupBox1: TGroupBox;
+    txtResult: TStaticText;
+    StaticText3: TStaticText;
+    cmbxYear: TComboBox;
+    /// <summary>
+    ///   Detecta cuando el combobox de los Estados de Mexico cambia su
+    ///   seleccion.
+    /// </summary>
+    /// <param name="Sender">
+    ///   Se refiere al componente combo box
+    /// </param>
+    procedure cmbxStateChange(Sender: TObject);
+    /// <summary>
+    ///   Detecta cuano TForm1 es creado.
+    /// </summary>
+    /// <param name="Sender">
+    ///   Referencia a Form Object
+    /// </param>
+    procedure FormCreate(Sender: TObject);
+    /// <summary>
+    ///   Detecta cuando el usuario sale del componente donde escribe el
+    ///   Importe gravable.
+    /// </summary>
+    /// <param name="Sender">
+    ///   Referencia al numberbox Object donde se escribe el Importe.
+    /// </param>
+    procedure nmbxAmmountExit(Sender: TObject);
+    /// <summary>
+    ///   Se encarga de liberar las clases creadas a lo largo del runtime.
+    /// </summary>
+    procedure FormDestroy(Sender: TObject);
+    /// <summary>
+    ///   Detecta cuando en el combobox se cambia la seleccion del año.
+    /// </summary>
+    procedure cmbxYearChange(Sender: TObject);
+
+  private
+    // Referencia a la Factory que se encarga de crear las dependencias de
+    // tipos de fabricas de calculos de ISR por año.
+    FCalculoPorYear: TCalculoPorYearFactory;
+    FEdoMexCreator : TEdoMexIsrCreator;
+    /// <summary>
+    ///   Obtiene los datos ingresados actuales y actualiza el calculo ISR.
+    /// </summary>
+    procedure RefreshCalculate;
+    /// <summary>
+    ///   Muestra el total ISR en un TStaticText
+    /// </summary>
+    /// <param name="AIsr">
+    ///   Recibe el total de ISR
+    /// </param>
+    procedure ShowResult(AnIsr: Double);
+
+  end;
+
+var
+  Form1: TForm1;
+
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.RefreshCalculate;
+var
+  lAmmount: Double;
+begin
+  lAmmount:=  StrToFloat(nmbxAmmount.Text);
+  if(lAmmount >= 0.00) then
+  begin
+    {Crea la fabrica encargada de calcular ISR conforme el año
+      seleccionado}
+    FEdoMexCreator := FCalculoPorYear.CrearCalculoPorYear(cmbxYear.Text);
+    {A traves de la fabrica creada se calcula el ISR conforme sus reglamentos
+      del año y de los estados de Mexico. Despues de hacer el calculo,
+      muestra el resultado}
+    ShowResult(FEdoMexCreator.CalcularIsr(lAmmount, cmbxState.Text));
+  end
+  else
+  begin
+    ShowMessage('El importe no puede ser una cantidad negativa')
+  end;
+end;
+
+procedure TForm1.cmbxYearChange(Sender: TObject);
+begin
+  // Al cambiar el año seleccionado se actualiza el calculo ISR
+  Form1.RefreshCalculate;
+end;
+
+procedure TForm1.cmbxStateChange(Sender: TObject);
+begin
+  // Al cambiar el Estado de Mexico seleccionado se actualiza el calculo ISR
+  Form1.RefreshCalculate;
+end;
+
+
+procedure TForm1.nmbxAmmountExit(Sender: TObject);
+begin
+  // Al cambiar el importe gravable se actualiza el calculo ISR
+  Form1.RefreshCalculate;
+end;
+
+procedure TForm1.ShowResult(AnIsr: Double);
+begin
+  // Muestra el total de ISR visualmente.
+  txtResult.Caption := FloatToStr(AnISR);
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  {Crea la instancia encargada de crear los tipos de fabrica que calculan
+    ISR conforme un año especifico }
+  FCalculoPorYear :=  TCalculoPorYearFactory.Create;
+end;
+
+procedure TForm1.FormDestroy(Sender: TObject);
+begin
+  // Libera la clase utilizada durante el tiempo de ejecucion.
+  FreeAndNil(FEdoMexCreator);
+  FreeAndNil(FCalculoPorYear);
+end;
+
+end.

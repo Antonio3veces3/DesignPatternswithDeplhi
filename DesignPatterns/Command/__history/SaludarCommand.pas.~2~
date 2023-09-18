@@ -1,0 +1,26 @@
+unit SaludarCommand;
+
+interface
+uses Vcl.Forms, Command, Receiver;
+type
+  TSaludarCommand = class(TInterfacedObject, ICommand)
+  private
+    FForm : TReceiver;
+  public
+    constructor Create(AForm : TReceiver);
+    procedure Execute;
+  end;
+
+implementation
+
+constructor TSaludarCommand.Create(AForm: TReceiver);
+begin
+  FForm := AForm;
+end;
+
+procedure TSaludarCommand.Execute;
+begin
+  FForm.Saludar;
+end;
+
+end.

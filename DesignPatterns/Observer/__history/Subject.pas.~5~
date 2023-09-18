@@ -1,0 +1,24 @@
+{***********************************************************}
+{                                                           }
+{    unit Subject                                           }
+{    Contiene los metodos que implementa un Subject         }
+{    en el patron de Observer.                              }
+{                                                           }
+{                                                           }
+{    Copyright (c) 1986,2023 Microsip                       }
+{                                                           }
+{***********************************************************}
+unit Subject;
+
+interface
+uses Observer;
+type
+  ISubject= interface['{72F93F1A-006C-4796-86B6-40162E538638}']
+    procedure Subscribe(AnObserver: IObserver);
+    procedure UnSubscribe(AnObserver: IObserver);
+    procedure Notify();
+  end;
+
+implementation
+
+end.

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/07/17 11:23:07.000.449,=C:\DelphiProjects\Unit1.pas</Transaction>
+    <Transaction>2023/07/17 11:23:48.000.736,C:\DelphiProjects\Unit1.dfm=C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\CommandFrm.dfm</Transaction>
+    <Transaction>2023/07/17 11:23:48.000.736,C:\DelphiProjects\Unit1.pas=C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\CommandFrm.pas</Transaction>
+    <Transaction>2023/07/17 11:23:59.000.891,C:\DelphiProjects\Project1.dproj=C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\ProjectCommandApp.dproj</Transaction>
+    <Transaction>2023/07/17 13:28:44.000.018,=C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\Unit1.pas</Transaction>
+    <Transaction>2023/07/17 13:29:12.000.919,C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\Unit1.pas=C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\Command.pas</Transaction>
+    <Transaction>2023/07/17 13:31:44.000.288,=C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\Unit1.pas</Transaction>
+    <Transaction>2023/07/17 13:31:49.000.855,C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\Unit1.pas=C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\Receiver.pas</Transaction>
+    <Transaction>2023/07/17 13:49:38.000.390,=C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\Unit1.pas</Transaction>
+    <Transaction>2023/07/17 13:50:40.000.399,C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\Unit1.pas=C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\SaludarCommand.pas</Transaction>
+    <Transaction>2023/07/17 13:58:42.000.228,=C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\Unit1.pas</Transaction>
+    <Transaction>2023/07/17 13:59:00.000.658,C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\Unit1.pas=C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\FechaYHoraCommand.pas</Transaction>
+    <Transaction>2023/07/17 14:03:13.000.713,=C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\Unit1.pas</Transaction>
+    <Transaction>2023/07/17 14:03:25.000.152,C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\Unit1.pas=C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\FrmRojaCommand.pas</Transaction>
+    <Transaction>2023/07/17 14:04:18.000.287,=C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\Unit1.pas</Transaction>
+    <Transaction>2023/07/17 14:04:26.000.991,C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\Unit1.pas=C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\FrmNegraCommand.pas</Transaction>
+    <Transaction>2023/07/17 14:05:25.000.640,=C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\Unit1.pas</Transaction>
+    <Transaction>2023/07/17 14:05:32.000.735,C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\Unit1.pas=C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\TerminarCommand.pas</Transaction>
+    <Transaction>2023/07/17 14:09:13.000.973,=C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\Unit1.pas</Transaction>
+    <Transaction>2023/07/17 14:09:20.000.241,C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\Unit1.pas=C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\Invoker.pas</Transaction>
+    <Transaction>2023/07/26 15:39:49.000.679,=C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\Unit1.pas</Transaction>
+    <Transaction>2023/07/26 15:39:56.000.322,C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\IReceiver.pas=C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\Unit1.pas</Transaction>
+    <Transaction>2023/07/26 15:40:29.000.163,C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\IntReceiver.pas=C:\Users\aanto\OneDrive\Documentos\Microsip\Capacitacion\Command\IReceiver.pas</Transaction>
+  </Transactions>
+</BorlandProject>

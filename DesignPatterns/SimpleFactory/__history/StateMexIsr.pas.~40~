@@ -1,0 +1,74 @@
+{***********************************************************}
+{                                                           }
+{    unit StateMexIsr                                       }
+{    Calculates the ISR using the Factory to get the        }
+{    Mexico state needed                                    }
+{    Copyright (c) 1986,2023 Microsip                       }
+{                                                           }
+{***********************************************************}
+unit StateMexIsr;
+
+interface
+uses Vcl.Dialogs, System.Classes, System.SysUtils, InEdoMex, FactoryEdoMexIsr;
+type
+  /// <summary>
+  ///   Represents the different states in Mexico.
+  ///   With its ways to calculate ISR.
+  /// </summary>
+  TStateMexIsr = class(TObject)
+
+  private
+    // Mexico State name
+    FNombreEdoMex : String;
+    FEdoMex: IEdoMex;
+    // Factory that create Mexico States.
+    FedoMexFactory : TEdoMexFactory;
+    procedure SetEdoMex(ANombreEdoMex: String);
+  public
+    /// <summary>
+    ///   Initialize the class with the specific Factory
+    /// </summary>
+    /// <param name="AFactory">
+    ///   Factory class that return a Mexico State
+    /// </param>
+    constructor Create(AFactory : TEdoMexFactory);
+    /// <summary>
+    ///   Update the name of Mexico State
+    /// </summary>
+    /// <param name="ANombreEdoMex">
+    ///   Mexico State Name
+    /// </param>
+    property nombreEdoMex : String write SetEdoMex;
+    /// <summary>
+    ///  Calculate ISR according some specific Mexico State
+    /// </summary>
+    /// <param name="AnAmmount">
+    ///   Importe gravable
+    /// </param>
+    /// <returns>
+    ///   Total of ISR.
+    /// </returns>
+    function CalcularEdoMexIsr(AnAmmount: Double): Double;
+  end;
+
+implementation
+
+constructor TStateMexIsr.Create(AFactory : TEdoMexFactory);
+begin
+  // Set the factory
+  FedoMexFactory := AFactory;
+end;
+
+procedure TStateMexIsr.SetEdoMex(ANombreEdoMex: string);
+begin
+  FNombreEdoMex := ANombreEdoMex;
+  ShowMessage('Ref count: '+ IntToStr(FEdoMex._Release));
+  FEdoMex := FedoMexFactory.CrearEdoMex(FNombreEdoMex);
+end;
+
+function TStateMexIsr.CalcularEdoMexIsr(AnAmmount: Double): Double;
+begin
+  // Calculate ISR with the instance created before.
+  Result := FEdoMex.CalcularIsr(AnAmmount);
+end;
+end.

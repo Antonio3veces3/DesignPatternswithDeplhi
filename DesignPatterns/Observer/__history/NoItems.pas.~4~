@@ -1,0 +1,43 @@
+unit NoItems;
+
+interface
+uses Observer, Subject, Vcl.StdCtrls, System.SysUtils,Vcl.Dialogs;
+
+type
+  TNoItems= class(TInterfacedObject, IObserver)
+  private
+    lCount: Integer;
+    lSubject: ISubject;
+    lControl: TStaticText;
+  public
+    constructor Create(ASubject: ISubject; AControl: TStaticText);
+    procedure Update(ANewNumber: Integer);
+    procedure Display;
+  end;
+
+implementation
+constructor TNoItems.Create(ASubject: ISubject; AControl: TStaticText);
+begin
+  lSubject:= ASubject;
+  lControl:= AControl;
+  lCount:=0;
+  lSubject.Subscribe(Self);
+end;
+
+procedure TNoItems.Update(ANewNumber: Integer);
+begin
+    if(ANewNumber=-1) then
+     lCount:=0
+    else
+     lCount:= lCount+1;
+
+
+   Display();
+end;
+
+procedure TNoItems.Display;
+begin
+    lControl.Caption:= IntToStr(lCount);
+end;
+
+end.

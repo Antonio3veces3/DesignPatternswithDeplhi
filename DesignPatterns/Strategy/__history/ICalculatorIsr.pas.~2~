@@ -1,0 +1,11 @@
+unit ICalculatorIsr;
+
+interface
+  type
+    ICalculatorBehavior= interface['{02451DF3-23A6-45C6-B41B-4DD09FA4DF47}']
+      function Calculate(const AnAmmount: Double): Double;
+    end;
+
+implementation
+
+end.

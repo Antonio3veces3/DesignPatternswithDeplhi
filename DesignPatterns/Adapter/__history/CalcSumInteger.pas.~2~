@@ -1,0 +1,17 @@
+unit CalcSumInteger;
+
+interface
+uses SumInteger;
+
+type
+  TCalcSum = class(TInterfacedObject, ISumInt)
+    function Add(ANumA: integer; ANumB: integer): integer;
+  end;
+
+implementation
+
+function TCalcSum.Add(ANumA: Integer; ANumB: Integer): Integer;
+begin
+  Result := ANumA + ANumB;
+end;
+end.

@@ -1,0 +1,19 @@
+program ProjectIsrCalcSimpleFactory;
+
+uses
+  Vcl.Forms,
+  IsrCalculatorFrm in 'C:\DelphiProjects\IsrCalculatorFrm.pas' {Form1},
+  ICalculatorIsr in 'ICalculatorIsr.pas',
+  IsrCoa in 'IsrCoa.pas',
+  IsrDur in 'IsrDur.pas',
+  IsrZac in 'IsrZac.pas',
+  State in 'State.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TForm1, Form1);
+  Application.Run;
+end.

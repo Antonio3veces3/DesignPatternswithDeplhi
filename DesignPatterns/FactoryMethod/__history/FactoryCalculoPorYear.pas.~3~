@@ -1,0 +1,29 @@
+unit FactoryCalculoPorYear;
+
+interface
+uses System.SysUtils, StrUtils, CreatorEdoMexIsr ,EdoMexIsr2021, EdoMexIsr2022, EdoMexIsr2023;
+type
+  TCalculoPorYearFactory = class(TObject)
+    public
+      function CrearCalculoPorYear(AYear: String): TEdoMexIsrCreator;
+  end;
+
+implementation
+function TCalculoPorYearFactory.CrearCalculoPorYear(AYear: string): TEdoMexIsrCreator;
+begin
+  case AnsiIndexStr(AYear, ['2021', '2022', '2023']) of
+      0:
+        begin
+          Result := TEdoMexIsr2021.Create;
+        end;
+      1:
+        begin
+          Result := TEdoMexIsr2022.Create;
+        end;
+      2:
+        begin
+          Result := TEdoMexIsr2023.Create;
+        end;
+      end;
+end;
+end.

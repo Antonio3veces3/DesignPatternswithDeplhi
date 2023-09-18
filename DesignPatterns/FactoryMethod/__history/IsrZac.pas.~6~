@@ -1,0 +1,40 @@
+{***********************************************************}
+{                                                           }
+{    unit IsrZac                                            }
+{    Calculates the ISR according to the                    }
+{    laws in Zacatecas, Mexico                              }
+{                                                           }
+{    Copyright (c) 1986,2000 Microsip                       }
+{                                                           }
+{***********************************************************}
+unit IsrZac;
+
+interface
+
+uses ICalculatorIsr;
+  type
+  /// <summary>
+  ///   Class to calculate the ISR according Zacatecas laws.
+  /// </summary>
+  TIsrZac= class(TInterfacedObject, IIsrCalculator)
+    function Calculate(AnAmmount: Double): Double;
+  end;
+
+implementation
+function TIsrZac.Calculate(AnAmmount: Double): Double;
+var
+  lIsr: Double;
+begin
+  // Conditions to calculate the ISR.
+  if(AnAmmount <= 1000) then
+      lIsr:= 100
+  else
+      if(AnAmmount <=5000) then
+          lIsr:= 200
+      else
+          lIsr:= 300;
+
+  Result:= lIsr;
+end;
+end.
+

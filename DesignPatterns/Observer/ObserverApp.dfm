@@ -1,0 +1,148 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Pattern Observer'
+  ClientHeight = 320
+  ClientWidth = 663
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  PixelsPerInch = 96
+  TextHeight = 13
+  object btnRestart: TBitBtn
+    Left = 80
+    Top = 255
+    Width = 81
+    Height = 26
+    Caption = 'Restart'
+    DragCursor = crHandPoint
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    Kind = bkAbort
+    NumGlyphs = 2
+    ParentFont = False
+    TabOrder = 0
+    OnClick = btnRestartClick
+  end
+  object StaticText1: TStaticText
+    Left = 80
+    Top = 40
+    Width = 86
+    Height = 18
+    Caption = 'Add a number:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+  end
+  object GroupBox1: TGroupBox
+    Left = 273
+    Top = 40
+    Width = 177
+    Height = 105
+    Caption = 'Suma total'
+    TabOrder = 2
+    object stxtSum: TStaticText
+      Left = 68
+      Top = 39
+      Width = 17
+      Height = 33
+      Caption = '0'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -24
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+    end
+  end
+  object GroupBox2: TGroupBox
+    Left = 273
+    Top = 176
+    Width = 177
+    Height = 105
+    Caption = 'Numero mayor'
+    TabOrder = 3
+    object stxtMayor: TStaticText
+      Left = 68
+      Top = 39
+      Width = 17
+      Height = 33
+      Caption = '0'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -24
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+    end
+  end
+  object GroupBox3: TGroupBox
+    Left = 471
+    Top = 40
+    Width = 170
+    Height = 105
+    Caption = 'Numeros agregados'
+    TabOrder = 4
+    object stxtNoItems: TStaticText
+      Left = 60
+      Top = 39
+      Width = 17
+      Height = 33
+      Caption = '0'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -24
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+    end
+  end
+  object GroupBox4: TGroupBox
+    Left = 471
+    Top = 176
+    Width = 170
+    Height = 105
+    Caption = 'Numero menor'
+    TabOrder = 5
+    object stxtMenor: TStaticText
+      Left = 60
+      Top = 39
+      Width = 17
+      Height = 33
+      Caption = '0'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -24
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+    end
+  end
+  object mmoNumbers: TMemo
+    Left = 80
+    Top = 64
+    Width = 177
+    Height = 185
+    Lines.Strings = (
+      '0')
+    TabOrder = 6
+    OnKeyPress = mmoNumbersKeyPress
+  end
+end

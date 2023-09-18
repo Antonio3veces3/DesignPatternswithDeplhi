@@ -1,0 +1,14 @@
+unit Subject;
+
+interface
+type
+  ISubject= interface['{72F93F1A-006C-4796-86B6-40162E538638}']
+    procedure Subscribe();
+    procedure UnSubscribe();
+    procedure Notify();
+
+  end;
+
+implementation
+
+end.

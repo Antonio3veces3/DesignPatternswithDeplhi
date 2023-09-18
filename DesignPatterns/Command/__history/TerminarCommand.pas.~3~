@@ -1,0 +1,29 @@
+unit TerminarCommand;
+
+interface
+
+uses Vcl.Forms, Command, Receiver;
+type
+  TTerminarCommand = class(TInterfacedObject, ICommand)
+    private
+      FForm : TReceiver;
+    public
+      constructor Create(AForm : TReceiver);
+      procedure Execute;
+  end;
+
+
+
+implementation
+
+constructor TTerminarCommand.Create(AForm: TReceiver);
+begin
+  FForm := AForm;
+end;
+
+procedure TTerminarCommand.Execute;
+begin
+  FForm.Terminar;
+end;
+
+end.

@@ -1,0 +1,83 @@
+{***********************************************************}
+{                                                           }
+{    unit Sum                                               }
+{    Control que muestra la suma cierta candidad de numeros }
+{    dados.                                                 }
+{    Copyright (c) 1986,2023 Microsip                       }
+{                                                           }
+{***********************************************************}
+unit Sum;
+
+interface
+uses Observer, Subject, Vcl.StdCtrls, System.SysUtils,Vcl.Dialogs;
+
+type
+  /// <summary>
+  ///  Clase control para visualizar la suma de un conjunto de numeros
+  ///   dados
+  /// </summary>
+  TSum= class(TInterfacedObject, IObserver)
+  private
+    // Almacena el total de la suma
+    lTotalSum: Integer;
+{    lSubject: TUserData;}
+    // Referencia al Observable que es de tipo ISubject.
+    lSubject: ISubject;
+    // Referencia al control visual para mostrar el total de la suma.
+    lControl: TStaticText;
+  public
+    /// <summary>
+    ///  Inicializa la clase y crea las referencias al Subject y a su control
+    ///  visual.
+    /// </summary>
+    /// <param name="ASubject">
+    ///   Clase Observable a la que se suscribe TSum para recibir
+    ///   notificaciones.
+    /// </param>
+    /// <param name="AControl">
+    ///   Componente visual para mostrar el resultado de la suma.
+    ///   notificaciones.
+    /// </param>
+    constructor Create(ASubject: ISubject; AControl: TStaticText);
+    /// <summary>
+    ///  Actualiza el total de la suma y el control visual.
+    /// </summary>
+    /// <param name="ASubject">
+    ///   Nuevo numero agregado por el usuario.
+    /// </param>
+    procedure Update(ANewNumber: Integer);
+    /// <summary>
+    ///   Muestra en el componente visual el total de la suma.
+    /// </summary>
+    procedure Display;
+  end;
+
+implementation
+constructor TSum.Create(ASubject: ISubject; AControl: TStaticText);
+begin
+  inherited Create;
+  lSubject:= ASubject;
+  lControl:= AControl;
+  lTotalSum:=0;
+  lSubject.Subscribe(Self); //Se suscribe al Subject recibido.
+end;
+
+procedure TSum.Update(ANewNumber: Integer);
+begin
+  // El -1 es el indicador para resetear el control.
+  if ANewNumber= -1 then
+    lTotalSum:= 0         // Se resetea a 0.
+  else
+    lTotalSum:= lTotalSum + ANewNumber;
+
+{  lTotalSum:= lSubject.GetNewNumber;}
+
+  Display();              // Muestra en el control el nuevo valor.
+end;
+
+procedure TSum.Display;
+begin
+  // Muestra en el control visual el total de la suma.
+  lControl.Caption:= IntToStr(lTotalSum);
+end;
+end.

@@ -1,0 +1,70 @@
+unit Invoker;
+
+interface
+uses System.Generics.Collections, System.SysUtils, StrUtils, Command,
+     SaludarCommand, FechaYHoraCommand, FrmRojaCommand, FrmNegraCommand,
+     TerminarCommand, Receiver;
+type
+ TInvoker = class(TObject)
+   private
+    FListaComandos : TList<ICommand>;
+    function GetListaComandos : TList<String>;
+   public
+    constructor Create;
+    property listaComandos : TList<String> read GetListaComandos;
+    procedure Execute(ANombreComando: String);
+    procedure SetCommand(AComando: ICommand);
+    procedure FreeComandos;
+ end;
+
+implementation
+
+constructor TInvoker.Create;
+begin
+  FListaComandos := TList<ICommand>.Create;
+end;
+
+procedure TInvoker.Execute(ANombreComando: String);
+begin
+  for var i := 0 to FListaComandos.Count - 1 do
+    if FListaComandos[i].GetNombre = ANombreComando then
+      FListaComandos[i].Execute;
+
+end;
+
+procedure TInvoker.SetCommand(AComando: ICommand);
+begin
+  {case AnsiIndexStr(ANombreComando,['Saludar','Fecha y hora',
+    'Forma roja','Forma negra', 'Terminar']) of
+      0:  FComando := TSaludarCommand.Create(TReceiver);
+      1:  FComando := TFechaYHoraCommand.Create(TReceiver);
+      2:  FComando := TFrmRojaCommand.Create(TReceiver);
+      3:  FComando := TFrmNegraCommand.Create(TReceiver);
+      4:  FComando := TTerminarCommand.Create(TReceiver);
+    end;   }
+  FListaComandos.Add(AComando);
+end;
+
+procedure TInvoker.FreeComandos;
+begin
+  for var i := 0 to FListaComandos.Count - 1 do
+    FListaComandos[i] := nil;
+end;
+
+function TInvoker.GetListaComandos: TList<String>;
+var
+  lNombresComandos : TList<String>;
+begin
+  try
+    for var i := 0 to FListaComandos.Count - 1 do
+    lNombresComandos.Add(FListaComandos[i].GetNombre);
+
+    Result := lNombresComandos;
+  finally
+    lNombresComandos.Clear;
+    FreeAndNil(lNombresComandos);
+  end;
+end;
+
+
+end.
